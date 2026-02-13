@@ -1,0 +1,44 @@
+.name {
+    justify-self: center;
+    text-align: center;
+    margin: 100px;
+    color: white;
+    font-weight: 100;
+    font-size: 50px;
+    font-family: var(--font-anon);
+}
+
+.loginbtn {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    color: white;
+    width: 750px;
+    border: none;
+    font-size: 60px;
+    padding: 20px;
+    justify-content: center;
+    text-align: center;
+    font-weight: 100;
+    font-family: var(--font-anon);
+    border-radius: 100vw;
+    margin: 30px;
+    transition: 0.5s;
+}
+
+.loginbtn:hover {
+    box-shadow: 0 0 10 #1ed760;
+}
+
+.loginbtn img {
+    width: 300px;
+}
+
+body {
+    background-color: #3b3b3b;
+    display: flex;
+    justify-content: center;
+}
