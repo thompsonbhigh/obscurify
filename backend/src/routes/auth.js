@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
 import querystring from 'node:querystring';
-import { ref } from 'node:process';
+import db from '../db.js';
 
 dotenv.config();
 const router = express.Router();
@@ -64,7 +64,7 @@ router.get('/callback', async (req, res) => {
         const tokenJson = await tokenRes.json();
 
         const { access_token, refresh_token, expires_in } = tokenJson;
-        req.session.spotify = { access_token, refresh_token, expires_at: Date.now() + expires_in * 1000 };
+        await db.query('UPDATE users SET access_token = $1, refresh_token = $2 WHERE id = 1', [access_token, refresh_token]);
     }
     res.redirect(`${process.env.FRONTEND_ORIGIN}/playlists`);
 });

@@ -7,7 +7,7 @@ import fs from 'fs';
 import session from 'express-session';
 
 import authRoutes from './routes/auth.js';
-// import spotifyRoutes from './routes/spotify.js';
+import spotifyRoutes from './routes/spotify.js';
 
 dotenv.config();
 
@@ -24,12 +24,13 @@ app.use(session({
     secret: 'baines-secret',
     resave: false,
     saveUninitialized: true,
+    cookie: {secure: true, sameSite: 'none'},
 }));
 
 app.get('/health', (req, res) => res.json({ ok: true }));
 
 app.use('/auth', authRoutes);
-// app.use('/', spotifyRoutes);
+app.use('/', spotifyRoutes);
 
 // TODO app.use engine
 
