@@ -9,7 +9,7 @@ export default function Home() {
     };
 
     return (
-        <main>
+        <main className={styles.main}>
             <h1 className={styles.name}>
                 obscurify
             </h1>

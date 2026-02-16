@@ -39,6 +39,28 @@
 
 body {
     background-color: #3b3b3b;
+}
+
+.main {
     display: flex;
     justify-content: center;
+}
+
+.playlists {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    justify-content: center;
+    gap: 50px;
+}
+
+.playlists img {
+    width: 300px;
+    height: 300px;
+    transition: 0.3s;
+}
+
+.playlists img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }

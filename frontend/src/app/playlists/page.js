@@ -20,15 +20,14 @@ export default async function Playlists() {
             <h1 className={styles.name}>
                 obscurify
             </h1>
-            <h2>Playlists</h2>
-            <ul>
+            <h2 className={styles.name}>Playlists</h2>
+            <div className={styles.playlists}>
                 {data.items?.map(p => (
-                    <li key={p.id}>
-                        <div>{p.name}</div>
-                        <div>{p.items.total} tracks</div>
-                    </li>
+                    <div className={styles.playlistItem} key={p.id}>
+                        <img src={p.images[0].url}/>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </main>
     );
 }
