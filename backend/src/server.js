@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import https from 'https';
 import fs from 'fs';
+import session from 'express-session';
 
 import authRoutes from './routes/auth.js';
 // import spotifyRoutes from './routes/spotify.js';
@@ -19,6 +20,11 @@ app.use(cors({
 
 app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());
+app.use(session({
+    secret: 'baines-secret',
+    resave: false,
+    saveUninitialized: true,
+}));
 
 app.get('/health', (req, res) => res.json({ ok: true }));
 
@@ -35,5 +41,6 @@ app.use((err, req, res, next) => {
 https.createServer({
     key: fs.readFileSync("certs/localhost-key.pem"),
     cert: fs.readFileSync("certs/localhost.pem"),
+    ca: fs.readFileSync("certs/rootCA.pem"),
 },
 app).listen(process.env.PORT, "0.0.0.0", () => console.log('API running on https://localhost:${process.env.PORT}'));
