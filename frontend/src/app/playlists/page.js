@@ -12,6 +12,10 @@ export default async function Playlists() {
     if (!res.ok) {
         return <div>Not logged in or failed to load playlists</div>
     }
+
+    const viewPlaylist = (id) => {
+        window.location.href = `https://127.0.0.1:4000/viewPlaylist`;
+    }
     
     const data = await res.json();
 
@@ -24,7 +28,7 @@ export default async function Playlists() {
             <div className={styles.playlists}>
                 {data.items?.map(p => (
                     <div className={styles.playlistItem} key={p.id}>
-                        <img src={p.images[0].url}/>
+                        <img onClick={viewPlaylist} src={p.images[0].url}/>
                     </div>
                 ))}
             </div>

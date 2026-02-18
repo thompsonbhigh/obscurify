@@ -15,9 +15,17 @@ router.get('/playlists', async (req, res) => {
         }
     });
 
-    const data = await response.json();
-    console.log(data);
-    res.json(data);
+    console.log(response);
+    if (response.status == 429) {
+        console.log('Too many requests');
+    } else {
+        const data = await response.json();
+        res.json(data);
+    }
+});
+
+router.get('/viewPlaylist', async (req, res) => {
+    console.log(req.body, req.cookies, req.session);
 });
 
 export default router;
